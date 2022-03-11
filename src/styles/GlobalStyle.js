@@ -40,6 +40,10 @@ const GlobalStyle = createGlobalStyle`
 
   }
 
+  p, h1, h2 {
+    margin: 0;
+  }
+
   code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
