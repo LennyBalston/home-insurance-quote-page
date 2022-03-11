@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# RSA Quote Page
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -14,10 +14,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### `npm cypress open-ct`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Starts the cypress test runner. Select your test to execute it and see the rendered output.
+See the section about [running tests](https://docs.cypress.io/guides/component-testing/framework-configuration#React-Create-React-App) for more information.
+
+### You can also run the tests without opening a browser with `npx cypress run-ct`.
 
 ### `npm run build`
 
