@@ -1,6 +1,7 @@
 const theme = {
   rootSize: 16,
   maxWidth: '1280px',
+  spinnerSize: '100px',
   breakpoint: {
     sm: '600px',
     md: '900px',
@@ -32,7 +33,9 @@ const theme = {
     }
   },
   spacing: {
-    small: 16,
+    default: 16,
+    xs: 8,
+    sm: 16,
   }
 }
 

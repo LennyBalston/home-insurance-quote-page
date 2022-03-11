@@ -8,6 +8,8 @@ import Container from './components/Container';
 import Header from './components/Header';
 import Logo from './components/Logo';
 
+import Loading from './containers/Loading';
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -17,6 +19,7 @@ function App() {
         <Logo src={logo} alt="logo" width="auto" height="auto" />
         </Container>
       </Header>
+      <Loading />
     </ThemeProvider>
   );
 }
