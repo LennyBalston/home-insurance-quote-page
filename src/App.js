@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Logo from './components/Logo';
 
 import Loading from './containers/Loading';
+import Error from './containers/Error';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Logo src={logo} alt="logo" width="auto" height="auto" />
         </Container>
       </Header>
-      <Loading />
+      {/* <Loading /> */}
+      <Error />
     </ThemeProvider>
   );
 }
