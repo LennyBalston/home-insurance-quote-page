@@ -10,6 +10,7 @@ import Logo from './components/Logo';
 
 import Loading from './containers/Loading';
 import Error from './containers/Error';
+import Quote from './containers/Quote';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         </Container>
       </Header>
       {/* <Loading /> */}
-      <Error />
+      {/* <Error /> */}
+      <Quote />
     </ThemeProvider>
   );
 }
