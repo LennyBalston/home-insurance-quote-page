@@ -17,18 +17,36 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [quote, setQuote] = useState([]);
 
   useEffect(() => {
-    console.log('lets get some data here');
-    setIsLoading(false);
-    setIsSuccess(true);
+    fetch(process.env.REACT_APP_QUOTE_API_URL)
+    .then(res => {
+      if (res.ok) {
+        return res.text();
+      } else {
+        throw new Error()
+      }      
+    })
+    .then(data => {
+      console.log('data: ', JSON.parse(data));
+      setQuote(JSON.parse(data)[0]);
+      setIsSuccess(true);
+      setIsLoading(false);
+    })
+    .catch(err => {
+      console.log('error');
+      setIsError(true);
+      setIsLoading(false);
+    })
   } ,[]);
 
   let content;
   if (isLoading) {
     content = <Loading />
   } else if (isSuccess) {
-    content = <Quote />
+    console.log('quote data: ', quote)
+    content = <Quote quote={quote}/>
   } else if (isError) {
     content = <Error />
   }
