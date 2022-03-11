@@ -4,6 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+Start the mock api server:
+### `json-server --watch db.json`
+
 In the project directory, you can run:
 
 ### `npm start`
