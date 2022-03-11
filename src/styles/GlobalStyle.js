@@ -25,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
+    box-sizing: border-box;
     background-color: ${(props) => props.theme.color.background};
     color: ${(props) => props.theme.color.text};   
     font-family: ${(props) => props.theme.font.family};

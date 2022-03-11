@@ -4,5 +4,5 @@ import App from './App'
 
 it('renders learn react link', () => {
   mount(<App />)
-  cy.get('h1').contains(/coming soon/i)
+  cy.get('img').should('include', /logo/i)
 })
