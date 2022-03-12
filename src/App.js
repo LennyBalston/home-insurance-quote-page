@@ -4,41 +4,52 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/GlobalStyle';
 import theme from './styles/theme';
 import logo from './assets/logo.png';
-import useFetch from './hooks/useFetch';
 
+import useFetch from './hooks/useFetch';
 import Container from './components/Container';
+import ContainerWrapper from './components/ContainerWrapper';
 import Header from './components/Header';
 import Logo from './components/Logo';
 
-import Loading from './containers/Loading';
-import Error from './containers/Error';
 import Quote from './containers/Quote';
 
-function App() {
-  const { data, isLoading, isSuccess, isError } =
-    useFetch(process.env.REACT_APP_QUOTE_API_URL);
+import Loading from './components/Loading';
+import Error from './components/Error';
 
-  let content;
-  if (isLoading) {
-    content = <Loading />
-  } else if (isSuccess) {
-    console.log('quote data: ', data)
-    content = <Quote quote={data} />
-  } else if (isError) {
-    content = <Error />
+function App() {
+
+  const {
+    data: quote,
+    isLoading: isQuoteLoading,
+    isSuccess: isQuoteSuccess,
+    isError: isQuoteError
+  } = useFetch(process.env.REACT_APP_QUOTE_API_URL);
+
+  let quoteContent;
+  if (isQuoteLoading) {
+    quoteContent = <Loading />
+  } else if (isQuoteSuccess) {
+    console.log('quote data: ', quote)
+    quoteContent = <Quote quote={quote} />
+  } else if (isQuoteError) {
+    quoteContent = <Error />
   }
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Header>
+      <ContainerWrapper backgroundColor={theme.color.white}>
         <Container >
-          <Logo src={logo} alt="logo" width="auto" height="auto" />
+          <Header>
+            <Logo src={logo} alt="logo" width="auto" height="auto" />
+          </Header>
         </Container>
-      </Header>
-      <Container as="main" pt="default">
-        {content}
-      </Container>
+      </ContainerWrapper>
+      <ContainerWrapper>
+        <Container as="main"  >
+          {quoteContent}
+        </Container>
+      </ContainerWrapper>
     </ThemeProvider>
   );
 }
