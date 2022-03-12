@@ -11,13 +11,11 @@ import ContainerWrapper from './components/ContainerWrapper';
 import Header from './components/Header';
 import Logo from './components/Logo';
 
-import Quote from './containers/Quote';
-
 import Loading from './components/Loading';
 import Error from './components/Error';
+import Quote from './containers/Quote';
 
 function App() {
-
   const {
     data: quote,
     isLoading: isQuoteLoading,
@@ -29,7 +27,6 @@ function App() {
   if (isQuoteLoading) {
     quoteContent = <Loading />
   } else if (isQuoteSuccess) {
-    console.log('quote data: ', quote)
     quoteContent = <Quote quote={quote[0]} />
   } else if (isQuoteError) {
     quoteContent = <Error />
