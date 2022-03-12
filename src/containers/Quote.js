@@ -31,6 +31,9 @@ function Quote({ quote }) {
     addonsContent = <Error />
   }
 
+  const toggleShowMonthlyPrice = () => {
+    setShowMonthlyPrice(prevState => !prevState);
+  }
 
   const handlePriceUpdate = (action, monthlyPrice, annualPrice) => {
     console.log('price ready to update');
@@ -54,9 +57,10 @@ function Quote({ quote }) {
           <p>Cover starts on {quote.startDate}</p>
         </div>
         <div>
-          <div>{monthlyPrice}</div>
-          <div>per month</div>
+          <div>{process.env.REACT_APP_CURRENCY_SYBMOL}{showMonthlyPrice ? monthlyPrice : annualPrice}</div>
+          <div>{showMonthlyPrice ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX}</div>
           <p>This price includes Insurance Premium Tax at the current rate. No charge for paying monthly.</p>
+          <button onClick={toggleShowMonthlyPrice}>monthly/annual</button>
         </div>
       </Grid>
 

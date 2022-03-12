@@ -7,7 +7,7 @@ function QuoteAddons({addons, showMonthlyPrice}) {
           <div key={id}>
           <h3>{addon.title}</h3>
           <div>
-            £{showMonthlyPrice ? addon.monthlyPrice : addon.annualPrice} per month
+            {process.env.REACT_APP_CURRENCY_SYBMOL}{showMonthlyPrice ? addon.monthlyPrice : addon.annualPrice} {showMonthlyPrice ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX}
             </div>
           <p>{addon.text}</p>
           <button>Select the extra</button>
