@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+const FixedWidthContainer = styled.div`
   display: block;
   max-width: ${(props) => props.theme.maxWidth};
   margin: 0 auto;
@@ -10,4 +10,4 @@ const Container = styled.div`
       ${props.theme.spacing[props.pt]} / ${props.theme.rootSize}) * 1rem)`};
 `;
 
-export default Container
+export default FixedWidthContainer

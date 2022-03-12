@@ -6,8 +6,8 @@ import theme from './styles/theme';
 import logo from './assets/logo.png';
 
 import useFetch from './hooks/useFetch';
-import Container from './components/Container';
-import ContainerWrapper from './components/ContainerWrapper';
+import FixedWidthContainer from './components/FixedWidthContainer';
+import FullWidthContainer from './components/FullWidthContainer';
 import Header from './components/Header';
 import Logo from './components/Logo';
 
@@ -35,18 +35,18 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <ContainerWrapper backgroundColor={theme.color.white}>
-        <Container >
+      <FullWidthContainer backgroundColor={theme.color.white}>
+        <FixedWidthContainer >
           <Header>
             <Logo src={logo} alt="logo" width="auto" height="auto" />
           </Header>
-        </Container>
-      </ContainerWrapper>
-      <ContainerWrapper>
-        <Container as="main"  >
+        </FixedWidthContainer>
+      </FullWidthContainer>
+      <FullWidthContainer>
+        <FixedWidthContainer as="main"  >
           {quoteContent}
-        </Container>
-      </ContainerWrapper>
+        </FixedWidthContainer>
+      </FullWidthContainer>
     </ThemeProvider>
   );
 }
