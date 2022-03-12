@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTheme } from 'styled-components';
 
 import { updateAddonsSelected, updatePrice } from '../store/userQuoteSlice';
 
 import Grid from '../components/Grid';
+import Container from '../components/Container';
 
 import { CONSTANT } from '../constants';
 
@@ -16,6 +18,8 @@ function QuoteAddons({ addons }) {
     state => state.userQuote.showMonthlyPrice
   );
   const dispatch = useDispatch();
+
+  const theme = useTheme();
 
   useEffect(() => {
     dispatch(updateAddonsSelected({ type: CONSTANT.ACTION_TYPE_SET, addons: addons }))
@@ -38,7 +42,10 @@ function QuoteAddons({ addons }) {
       <h1>Tailor your cover with our optional extras.</h1>
       <Grid>
         {addons.map((addon, id) => (
-          <div key={id} style={{ backgroundColor: 'pink' }}>
+          <Container
+          backgroundColor="white"
+          shadow
+          padding={theme.spacing.default} key={id} >
             <h3>{addon.title}</h3>
             <div>
               {process.env.REACT_APP_CURRENCY_SYBMOL}{showMonthlyPrice ? addon.monthlyPrice.toFixed(2) : addon.annualPrice.toFixed(2)} {showMonthlyPrice ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX}
@@ -47,7 +54,7 @@ function QuoteAddons({ addons }) {
             <button onClick={() => handleAddonToggle(id, addon.monthlyPrice, addon.annualPrice )}>
               {!addonsSelected[id] ? 'add' : 'remove'} extras
               </button>
-          </div>
+          </Container>
         )
 
         )}

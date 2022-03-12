@@ -12,8 +12,10 @@ import QuoteAddons from './QuoteAddons';
 
 import { CONSTANT } from '../constants';
 
-function Quote({ quote }) {
 
+function Quote(props) {
+  const quote = props.quote;
+console.log('theme = ', props)
   const dispatch = useDispatch();
 
   useEffect(() => {

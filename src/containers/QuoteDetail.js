@@ -1,8 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useTheme } from 'styled-components'
 
-import { toggleShowMonthlyPrice} from '../store/userQuoteSlice';
+import { toggleShowMonthlyPrice } from '../store/userQuoteSlice';
 
 import Grid from '../components/Grid';
+import Container from '../components/Container';
 
 
 function QuoteDetail({ quote }) {
@@ -13,8 +15,12 @@ function QuoteDetail({ quote }) {
   );
   const dispatch = useDispatch();
 
+  const theme = useTheme();
+
   return (
-    <>
+    <Container
+      mt={theme.spacing.default} mb={theme.spacing.default}
+    >
       <Grid>
         <div>
           <div>Hey {quote.firstName}</div>
@@ -22,14 +28,18 @@ function QuoteDetail({ quote }) {
           <p>Quote reference: {quote.quoteRef}</p>
           <p>Cover starts on {quote.startDate}</p>
         </div>
-        <div style={{ backgroundColor: 'white' }}>
+        <Container
+          backgroundColor="white"
+          shadow
+          padding={theme.spacing.default}
+        >
           <div>{process.env.REACT_APP_CURRENCY_SYBMOL}{showMonthlyPrice ? monthlyPrice.toFixed(2) : annualPrice.toFixed(2)}</div>
           <div>{showMonthlyPrice ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX}</div>
           <p>This price includes Insurance Premium Tax at the current rate. No charge for paying monthly.</p>
           <button onClick={() => dispatch(toggleShowMonthlyPrice())}>monthly/annual</button>
-        </div>
+        </Container>
       </Grid>
-    </>
+    </Container>
   )
 }
 

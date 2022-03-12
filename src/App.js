@@ -7,7 +7,7 @@ import logo from './assets/logo.png';
 
 import useFetch from './hooks/useFetch';
 import FixedWidthContainer from './components/FixedWidthContainer';
-import FullWidthContainer from './components/FullWidthContainer';
+import Container from './components/Container';
 import Header from './components/Header';
 import Logo from './components/Logo';
 
@@ -35,18 +35,18 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <FullWidthContainer backgroundColor={theme.color.white}>
+      <Container backgroundColor={theme.color.white}>
         <FixedWidthContainer >
           <Header>
             <Logo src={logo} alt="logo" width="auto" height="auto" />
           </Header>
         </FixedWidthContainer>
-      </FullWidthContainer>
-      <FullWidthContainer>
+      </Container>
+      <Container>
         <FixedWidthContainer as="main"  >
           {quoteContent}
         </FixedWidthContainer>
-      </FullWidthContainer>
+      </Container>
     </ThemeProvider>
   );
 }

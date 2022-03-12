@@ -36,7 +36,8 @@ const theme = {
     default: 16,
     xs: 8,
     sm: 16,
-  }
+  },
+  boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.15)',
 }
 
 export default theme;
