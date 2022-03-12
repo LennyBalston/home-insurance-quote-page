@@ -30,7 +30,7 @@ function App() {
     quoteContent = <Loading />
   } else if (isQuoteSuccess) {
     console.log('quote data: ', quote)
-    quoteContent = <Quote quote={quote} />
+    quoteContent = <Quote quote={quote[0]} />
   } else if (isQuoteError) {
     quoteContent = <Error />
   }

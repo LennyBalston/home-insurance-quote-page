@@ -7,7 +7,7 @@ const useFetch = (url) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_QUOTE_API_URL)
+    fetch(url)
     .then(res => {
       if (res.ok) {
         return res.text();
@@ -16,7 +16,7 @@ const useFetch = (url) => {
       }      
     })
     .then(data => {
-      setData(JSON.parse(data)[0]);
+      setData(JSON.parse(data));
       setIsSuccess(true);
       setIsLoading(false);
     })
