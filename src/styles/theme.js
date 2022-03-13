@@ -21,6 +21,12 @@ const sizes = {
   64: '4rem',
 }
 
+const spacing = {
+  8: '0.5rem',
+  16: '1rem',
+  32: '2rem',
+}
+
 const theme = {
   maxWidth: '1280px',
   spinnerSize: '100px',
@@ -34,26 +40,13 @@ const theme = {
   default: colors.grey.darkest,
   primary: colors.primary.main,
   colors: colors,
-  colorOLD: {
-    text: '#112a42',
-    background: '#f0f4f8',
-    white: '#ffffff',
-    primary: {
-      lightest: '#e7e6fe',
-      main: '#5937f1',
-    },
-    grey: {
-      lightest: '#f0f4f8',
-      darkest: 'black'
-    }
-  },
   font: {
     family: 'Nunito, Helvetica, Arial, sans-serif',
     size: {
       default: 18, ...sizes
     },
     lineHeight: 1.25,
-    weight : {
+    weight: {
       normal: 400,
       bold: 700
     },
@@ -71,9 +64,45 @@ const theme = {
     },
   },
   spacing: {
-    default: 16,
-    xs: 8,
-    sm: 16,
+    default: spacing[16],
+    ...spacing
+  },
+  button: {
+    paddingX: spacing[16],
+    paddingY: spacing[8],
+    borderRadius: '25px',
+    fontSize: sizes[18],
+    cursor: 'pointer',
+    primary: {
+      default: {
+        background: colors.primary.main,
+        color: colors.white,
+      },
+      hover: {
+        background: colors.primary.light,
+        color: colors.white,
+      }
+    },
+    secondary: {
+      default: {
+        background: colors.primary.light,
+        color: colors.grey.darkest,
+      },
+      hover: {
+        background: colors.primary.main,
+        color: colors.white,
+      }
+    },
+    tertiary: {
+      default: {
+        background: colors.primary.lighter,
+        color: colors.grey.darkest,
+      },
+      hover: {
+        background: colors.primary.light,
+        color: colors.grey.darkest,
+      }
+    },
   },
   boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.15)',
 }

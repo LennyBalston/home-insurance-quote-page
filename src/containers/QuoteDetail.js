@@ -7,6 +7,7 @@ import Grid from '../components/Grid';
 import Container from '../components/Container';
 import Typography from '../components/Typography';
 import Heading2 from '../components/Heading2';
+import Button from '../components/Button';
 
 function QuoteDetail({ quote }) {
   const monthlyPrice = useSelector(state => state.userQuote.monthlyPrice);
@@ -51,8 +52,16 @@ function QuoteDetail({ quote }) {
           <Heading2 color="primary">
             {showMonthlyPrice ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX}
           </Heading2>
-          <Typography>This price includes Insurance Premium Tax at the current rate. No charge for paying monthly.</Typography>
-          <button onClick={() => dispatch(toggleShowMonthlyPrice())}>monthly/annual</button>
+          <Typography>
+            This price includes Insurance Premium Tax at the current rate. No charge for paying monthly.
+          </Typography>
+          <Button
+            onClick={() => dispatch(toggleShowMonthlyPrice())}
+            variant="secondary"
+            fullWidth
+          >
+            monthly/annual
+          </Button>
         </Container>
       </Grid>
     </Container>

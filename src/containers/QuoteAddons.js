@@ -9,6 +9,7 @@ import Container from '../components/Container';
 import Typography from '../components/Typography';
 import Heading1 from '../components/Heading1';
 import Heading2 from '../components/Heading2';
+import Button from '../components/Button';
 
 import { CONSTANT } from '../constants';
 
@@ -59,9 +60,12 @@ function QuoteAddons({ addons }) {
 
             <Typography as="p">{addon.text}</Typography>
 
-            <button onClick={() => handleAddonToggle(id, addon.monthlyPrice, addon.annualPrice)}>
+            <Button variant="secondary"
+              onClick={() => handleAddonToggle(
+                id, addon.monthlyPrice, addon.annualPrice
+              )}>
               {!addonsSelected[id] ? 'add' : 'remove'} extras
-            </button>
+            </Button>
 
           </Container>
         )

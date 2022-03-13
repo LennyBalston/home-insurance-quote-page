@@ -16,7 +16,7 @@ import { CONSTANT } from '../constants';
 
 function Quote(props) {
   const quote = props.quote;
-console.log('theme = ', props)
+  console.log('theme = ', props)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,8 +43,7 @@ console.log('theme = ', props)
 
   return (
     <>
-    <Flex justifyContent="center">tesinting Flex</Flex>
-      <QuoteDetail quote={quote}/>
+      <QuoteDetail quote={quote} />
       {addonsContent}
     </>
   )
