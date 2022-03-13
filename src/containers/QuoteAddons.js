@@ -6,6 +6,9 @@ import { updateAddonsSelected, updatePrice } from '../store/userQuoteSlice';
 
 import Grid from '../components/Grid';
 import Container from '../components/Container';
+import Typography from '../components/Typography';
+import Heading1 from '../components/Heading1';
+import Heading2 from '../components/Heading2';
 
 import { CONSTANT } from '../constants';
 
@@ -32,28 +35,34 @@ function QuoteAddons({ addons }) {
     } else {
       action = CONSTANT.ACTION_TYPE_REMOVE
     }
-     
-    dispatch(updatePrice({type: action, monthlyPrice: monthlyPrice, annualPrice: annualPrice}))
+
+    dispatch(updatePrice({ type: action, monthlyPrice: monthlyPrice, annualPrice: annualPrice }))
     dispatch(updateAddonsSelected({ type: CONSTANT.ACTION_TYPE_TOGGLE, id: id }))
   }
 
   return (
     <>
-      <h1>Tailor your cover with our optional extras.</h1>
+      <Heading1 as="h1">Tailor your cover with our optional extras.</Heading1>
       <Grid>
         {addons.map((addon, id) => (
           <Container
-          backgroundColor="white"
-          shadow
-          padding={theme.spacing.default} key={id} >
-            <h3>{addon.title}</h3>
-            <div>
+            key={id}
+            backgroundColor="white"
+            shadow
+            padding={theme.spacing.default}
+          >
+            <Heading2>{addon.title}</Heading2>
+
+            <Typography color="primary">
               {process.env.REACT_APP_CURRENCY_SYBMOL}{showMonthlyPrice ? addon.monthlyPrice.toFixed(2) : addon.annualPrice.toFixed(2)} {showMonthlyPrice ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX}
-            </div>
-            <p>{addon.text}</p>
-            <button onClick={() => handleAddonToggle(id, addon.monthlyPrice, addon.annualPrice )}>
+            </Typography>
+
+            <Typography as="p">{addon.text}</Typography>
+
+            <button onClick={() => handleAddonToggle(id, addon.monthlyPrice, addon.annualPrice)}>
               {!addonsSelected[id] ? 'add' : 'remove'} extras
-              </button>
+            </button>
+
           </Container>
         )
 

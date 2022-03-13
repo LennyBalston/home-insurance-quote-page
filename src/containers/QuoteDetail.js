@@ -5,7 +5,8 @@ import { toggleShowMonthlyPrice } from '../store/userQuoteSlice';
 
 import Grid from '../components/Grid';
 import Container from '../components/Container';
-
+import Typography from '../components/Typography';
+import Heading2 from '../components/Heading2';
 
 function QuoteDetail({ quote }) {
   const monthlyPrice = useSelector(state => state.userQuote.monthlyPrice);
@@ -23,19 +24,34 @@ function QuoteDetail({ quote }) {
     >
       <Grid>
         <div>
-          <div>Hey {quote.firstName}</div>
-          <p>Here is your quote for Royal & Sun Alliance, {quote.address1}, {quote.address2}, {quote.address} </p>
-          <p>Quote reference: {quote.quoteRef}</p>
-          <p>Cover starts on {quote.startDate}</p>
+          <Typography as="div" fontSize="42">Hey {quote.firstName}</Typography>
+          <Typography fontSize="20">
+            Here is your quote for Royal & Sun Alliance, {quote.address1}, {quote.address2}, {quote.address}
+          </Typography>
+          <Typography fontSize="20">
+            Quote reference: {quote.quoteRef}
+          </Typography>
+          <Typography fontSize="20">
+            Cover starts on {quote.startDate}
+          </Typography>
         </div>
         <Container
           backgroundColor="white"
           shadow
           padding={theme.spacing.default}
         >
-          <div>{process.env.REACT_APP_CURRENCY_SYBMOL}{showMonthlyPrice ? monthlyPrice.toFixed(2) : annualPrice.toFixed(2)}</div>
-          <div>{showMonthlyPrice ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX}</div>
-          <p>This price includes Insurance Premium Tax at the current rate. No charge for paying monthly.</p>
+          <Typography as="div"
+            fontSize="64"
+            fontWeight="bold"
+            lineHeight="1"
+          >
+            {process.env.REACT_APP_CURRENCY_SYBMOL}{showMonthlyPrice ? monthlyPrice.toFixed(2) : annualPrice.toFixed(2)}
+          </Typography>
+
+          <Heading2 color="primary">
+            {showMonthlyPrice ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX}
+          </Heading2>
+          <Typography>This price includes Insurance Premium Tax at the current rate. No charge for paying monthly.</Typography>
           <button onClick={() => dispatch(toggleShowMonthlyPrice())}>monthly/annual</button>
         </Container>
       </Grid>

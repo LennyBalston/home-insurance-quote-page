@@ -16,9 +16,9 @@ const Spinner = styled.div`
   
   border-width: 8px;
   border-style: solid;
-  border-color: ${(props) => props.theme.color.background};
-  border-top-color: ${(props) => props.theme.color.primary.main};
-  border-bottom-color: ${(props) => props.theme.color.primary.main};
+  border-color: ${(props) => props.theme.background};
+  border-top-color: ${(props) => props.theme.colors.primary.main};
+  border-bottom-color: ${(props) => props.theme.colors.primary.main};
   border-radius: 50%;
   width: ${(props) => props.theme.spinnerSize};
   height: ${(props) => props.theme.spinnerSize};

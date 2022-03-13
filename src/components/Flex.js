@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 const Flex = styled.div`
+background-color: pink;
   display: flex;
   width: 100%;
-  max-width: ${(props) => props.theme.maxWidth};
-  margin: 0 auto;
+  /* margin: 0 auto; */
   justify-content: ${(props) => props.justifyContent ? props.justifyContent : 'initial'};
   align-items: ${(props) => props.alignItems ? props.alignItems : 'initial'};
   padding: 0 ${(props) => `calc((

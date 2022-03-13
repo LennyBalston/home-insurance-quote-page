@@ -35,7 +35,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Container backgroundColor={theme.color.white}>
+      <Container backgroundColor={theme.colors.white}>
         <FixedWidthContainer >
           <Header>
             <Logo src={logo} alt="logo" width="auto" height="auto" />

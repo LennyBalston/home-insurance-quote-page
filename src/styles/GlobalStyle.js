@@ -23,21 +23,27 @@ const GlobalStyle = createGlobalStyle`
   url("/fonts/Nunito-Regular.woff") format("woff");
   }
 
+  html {
+  box-sizing: border-box;
+  font-size: 16px;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
   body {
     margin: 0;
-    box-sizing: border-box;
-    background-color: ${(props) => props.theme.color.background};
-    color: ${(props) => props.theme.color.text};   
+    background-color: ${(props) => props.theme.background};
+    color: ${(props) => props.theme.default};   
     font-family: ${(props) => props.theme.font.family};
-    font-size: ${(props) => `calc((
-      ${props.theme.font.size.default} / ${props.theme.rootSize}) * 1rem)`};
-    font-weight: ${(props) => props.theme.font.weight.regular};
+    font-size: ${(props) => props.theme.font.size.default};
+    font-weight: ${(props) => props.theme.font.weight.normal};
     line-height: ${(props) => props.theme.font.lineHeight};
   }
 
   a {
     text-decoration: none;
-
   }
 
   p, h1, h2 {
