@@ -8,7 +8,6 @@ import logo from './assets/logo.png';
 import useFetch from './hooks/useFetch';
 import FixedWidthContainer from './components/FixedWidthContainer';
 import Container from './components/Container';
-import Header from './components/Header';
 import Logo from './components/Logo';
 
 import Loading from './components/Loading';
@@ -37,9 +36,9 @@ function App() {
       <GlobalStyle />
       <Container backgroundColor="white">
         <FixedWidthContainer >
-          <Header>
+          <Container as="header" display="flex" alignItems="center" height="40px" mdHeight="80px">
             <Logo src={logo} alt="logo" width="auto" height="auto" />
-          </Header>
+          </Container>
         </FixedWidthContainer>
       </Container>
       <Container backgroundColor="green">

@@ -4,6 +4,11 @@ const Container = styled.div`
   display: ${(props) => props.display ? props.display : "block"};
 
   max-width: ${(props) => props.maxWidth};
+
+  height: ${(props) => props.height};
+  @media (min-width: ${(props) => props.theme.breakpoint.md}) {
+    height: ${(props) => props.mdHeight}
+  } 
  
   margin-top: ${(props) => props.my && props.theme.spacing[props.my]};
   margin-top: ${(props) => props.mt && props.theme.spacing[props.mt]};
@@ -33,24 +38,17 @@ const Container = styled.div`
   justify-content: ${(props) => props.justifyContent && props.justifyContent};
   align-items: ${(props) => props.alignItems && props.alignItems};
   
-  
-
   // flex children
   flex-grow: ${(props) => props.flexGrow && props.flexGrow};
 
-  
-
   // grid parent
   grid-template-columns: ${(props) => props.gridTemplateColumns};
-
-  // grid children
-  grid-column: ${(props) => props.gridColumn};
-
   @media (min-width: ${(props) => props.theme.breakpoint.sm}) {
     grid-template-columns: ${(props) => props.smGridTemplateColumns}
   }
 
-
+  // grid children
+  grid-column: ${(props) => props.gridColumn};
 `;
 
 export default Container;
