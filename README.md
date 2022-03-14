@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 Start the mock api server:
-### `json-server --watch db.json`
+### `json-server --watch src/db.json`
 It will run on port 4000
 Resources
   http://localhost:4000/quote

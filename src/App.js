@@ -14,6 +14,9 @@ import Loading from './components/Loading';
 import Error from './components/Error';
 import Quote from './containers/Quote';
 
+import { store } from './store/store';
+import { Provider } from 'react-redux';
+
 function App() {
   const {
     data: quote,
@@ -32,6 +35,7 @@ function App() {
   }
 
   return (
+    <Provider store={store}>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Container backgroundColor="white">
@@ -47,6 +51,7 @@ function App() {
         </FixedWidthContainer>
       </Container>
     </ThemeProvider>
+    </Provider>
   );
 }
 

@@ -54,7 +54,7 @@ function QuoteAddons({ addons }) {
           >
             <Heading2 alignSelf="baseline">{addon.title}</Heading2>
 
-            <Typography 
+            <Typography data-test="addon-price"
               color="primary"
               textAlign="right"
               justifySelf="end"
@@ -73,7 +73,7 @@ function QuoteAddons({ addons }) {
               justifyContent="flex-end"
               alignItems="flex-end"
             >
-              <Button title={!addonsSelected[id] ? 'add ' + addon.title : 'remove ' + addon.title} variant={!addonsSelected[id] ? 'secondary' : 'tertiary'}
+              <Button data-test="addon-toggle" title={!addonsSelected[id] ? 'add ' + addon.title : 'remove ' + addon.title} variant={!addonsSelected[id] ? 'secondary' : 'tertiary'}
                 onClick={() => handleAddonToggle(
                   id, addon.monthlyPrice, addon.annualPrice
                 )}>

@@ -31,7 +31,7 @@ function QuoteDetail({ quote }) {
         <Typography fontSize="20">
           {getAddressString(quote)}
         </Typography>
-        <Typography fontSize="20">
+        <Typography data-test="quote-ref" fontSize="20">
           {process.env.REACT_APP_QUOTE_REF_LABEL} {quote.quoteRef}
         </Typography>
         <Typography fontSize="20">
@@ -44,7 +44,7 @@ function QuoteDetail({ quote }) {
         p="32"
         borderRounded
       >
-        <Typography as="div"
+        <Typography as="div" data-test="quote-price" 
           fontSize="64"
           fontWeight="bold"
           lineHeight="1"
@@ -72,7 +72,7 @@ function QuoteDetail({ quote }) {
             {process.env.REACT_APP_QUOTE_PRICE_INFO}
           </Typography>
 
-          <Button
+          <Button data-test="switch-payment-terms"
             onClick={() => dispatch(toggleShowMonthlyPrice())}
             variant="secondary"
             fullWidth
