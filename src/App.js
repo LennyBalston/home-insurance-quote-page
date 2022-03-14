@@ -35,14 +35,14 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Container backgroundColor={theme.colors.white}>
+      <Container backgroundColor="white">
         <FixedWidthContainer >
           <Header>
             <Logo src={logo} alt="logo" width="auto" height="auto" />
           </Header>
         </FixedWidthContainer>
       </Container>
-      <Container>
+      <Container backgroundColor="green">
         <FixedWidthContainer as="main"  >
           {quoteContent}
         </FixedWidthContainer>

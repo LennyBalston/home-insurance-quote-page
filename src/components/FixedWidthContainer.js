@@ -2,12 +2,10 @@ import styled from 'styled-components';
 
 const FixedWidthContainer = styled.div`
   display: block;
-  max-width: ${(props) => props.theme.maxWidth};
+  box-sizing: content-box;
+  max-width: ${(props) => props.theme.fixedWidth};
+  padding: 0 ${(props => props.p ? props.p : props.theme.spacing[32])};
   margin: 0 auto;
-  padding: 0 ${(props) => `calc((
-      ${props.theme.spacing.default} / ${props.theme.rootSize}) * 1rem)`}; 
-  padding-top: ${(props) => `calc((
-      ${props.theme.spacing[props.pt]} / ${props.theme.rootSize}) * 1rem)`};
 `;
 
-export default FixedWidthContainer
+export default FixedWidthContainer;

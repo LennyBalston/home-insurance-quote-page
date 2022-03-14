@@ -14,13 +14,22 @@ const GlobalStyle = createGlobalStyle`
  url("/fonts/Nunito-Regular.woff") format("woff");
   }
 
+  /** Nunito SemiBold **/
+  @font-face {
+    font-family: "Nunito";
+    font-weight: 600;
+    font-style: semi-bold;
+    src: url("/fonts/Nunito-SemiBold.woff2") format("woff2"),
+  url("/fonts/Nunito-SemiBold.woff") format("woff");
+  }
+
   /** Nunito Bold **/
   @font-face {
     font-family: "Nunito";
     font-weight: 700;
     font-style: bold;
-    src: url("/fonts/Nunito-Regular.woff2") format("woff2"),
-  url("/fonts/Nunito-Regular.woff") format("woff");
+    src: url("/fonts/Nunito-Bold.woff2") format("woff2"),
+  url("/fonts/Nunito-Bold.woff") format("woff");
   }
 
   html {
@@ -35,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     background-color: ${(props) => props.theme.background};
-    color: ${(props) => props.theme.default};   
+    color: ${(props) => props.theme.foreground};   
     font-family: ${(props) => props.theme.font.family};
     font-size: ${(props) => props.theme.font.size.default};
     font-weight: ${(props) => props.theme.font.weight.normal};

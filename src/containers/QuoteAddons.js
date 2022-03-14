@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useTheme } from 'styled-components';
 
 import { updateAddonsSelected, updatePrice } from '../store/userQuoteSlice';
 
-import Grid from '../components/Grid';
 import Container from '../components/Container';
 import Typography from '../components/Typography';
 import Heading1 from '../components/Heading1';
@@ -22,8 +20,6 @@ function QuoteAddons({ addons }) {
     state => state.userQuote.showMonthlyPrice
   );
   const dispatch = useDispatch();
-
-  const theme = useTheme();
 
   useEffect(() => {
     dispatch(updateAddonsSelected({ type: CONSTANT.ACTION_TYPE_SET, addons: addons }))
@@ -43,36 +39,57 @@ function QuoteAddons({ addons }) {
 
   return (
     <>
-      <Heading1 as="h1">Tailor your cover with our optional extras.</Heading1>
-      <Grid>
+      <Heading1 as="h1" pb="32" >{process.env.REACT_APP_ADDONS_HEADING}</Heading1>
+      <Container display="grid" mb="32" gap="32" smGridTemplateColumns="1fr 1fr">
         {addons.map((addon, id) => (
-          <Container
-            key={id}
-            backgroundColor="white"
-            shadow
-            padding={theme.spacing.default}
-          >
-            <Heading2>{addon.title}</Heading2>
 
-            <Typography color="primary">
+          <Container key={id} 
+            display="grid"
+            rowGap="42"
+            columnGap="default"
+            backgroundColor="white"
+            p="default"
+            borderRounded
+            borderColor={addonsSelected[id] ? 'secondary' : 'white'}
+          >
+            <Heading2 alignSelf="baseline">{addon.title}</Heading2>
+
+            <Typography 
+              color="primary"
+              textAlign="right"
+              justifySelf="end"
+              alignSelf="baseline"
+            >
               {process.env.REACT_APP_CURRENCY_SYBMOL}{showMonthlyPrice ? addon.monthlyPrice.toFixed(2) : addon.annualPrice.toFixed(2)} {showMonthlyPrice ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX}
             </Typography>
 
-            <Typography as="p">{addon.text}</Typography>
+            <Typography as="p" gridColumn="span 2">
+              {addon.text}
+            </Typography>
 
-            <Button variant="secondary"
-              onClick={() => handleAddonToggle(
-                id, addon.monthlyPrice, addon.annualPrice
-              )}>
-              {!addonsSelected[id] ? 'add' : 'remove'} extras
-            </Button>
+            <Container
+              gridColumn="span 2"
+              display="flex"
+              justifyContent="flex-end"
+              alignItems="flex-end"
+            >
+              <Button title={!addonsSelected[id] ? 'add ' + addon.title : 'remove ' + addon.title} variant={!addonsSelected[id] ? 'secondary' : 'tertiary'}
+                onClick={() => handleAddonToggle(
+                  id, addon.monthlyPrice, addon.annualPrice
+                )}>
+                {!addonsSelected[id]
+                  ? process.env.REACT_APP_ADDONS_SELECT
+                  : process.env.REACT_APP_ADDONS_REMOVE
+                }
+              </Button>
+            </Container>
 
           </Container>
         )
 
         )}
 
-      </Grid>
+      </Container>
     </>
   )
 }

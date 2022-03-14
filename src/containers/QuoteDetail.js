@@ -1,13 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useTheme } from 'styled-components'
 
 import { toggleShowMonthlyPrice } from '../store/userQuoteSlice';
 
-import Grid from '../components/Grid';
 import Container from '../components/Container';
 import Typography from '../components/Typography';
-import Heading2 from '../components/Heading2';
 import Button from '../components/Button';
+
+const getAddressString = (quote) => {
+  const addressLines = [process.env.REACT_APP_QUOTE_INTRO];
+  quote.address1 && addressLines.push(quote.address1);
+  quote.address2 && addressLines.push(quote.address2);
+  quote.address3 && addressLines.push(quote.address3);
+  return addressLines.join(", ")
+}
 
 function QuoteDetail({ quote }) {
   const monthlyPrice = useSelector(state => state.userQuote.monthlyPrice);
@@ -17,53 +22,69 @@ function QuoteDetail({ quote }) {
   );
   const dispatch = useDispatch();
 
-  const theme = useTheme();
-
   return (
-    <Container
-      mt={theme.spacing.default} mb={theme.spacing.default}
+    <Container display="grid" gap="32" smGridTemplateColumns="1fr 1fr"
+      mt="32" mb="80"
     >
-      <Grid>
-        <div>
-          <Typography as="div" fontSize="42">Hey {quote.firstName}</Typography>
-          <Typography fontSize="20">
-            Here is your quote for Royal & Sun Alliance, {quote.address1}, {quote.address2}, {quote.address}
-          </Typography>
-          <Typography fontSize="20">
-            Quote reference: {quote.quoteRef}
-          </Typography>
-          <Typography fontSize="20">
-            Cover starts on {quote.startDate}
-          </Typography>
-        </div>
-        <Container
-          backgroundColor="white"
-          shadow
-          padding={theme.spacing.default}
+      <Container display="flex" flexDirection="column" py="32" gap="32">
+        <Typography as="div" fontSize="42">{process.env.REACT_APP_QUOTE_GREETING} {quote.firstName},</Typography>
+        <Typography fontSize="20">
+          {getAddressString(quote)}
+        </Typography>
+        <Typography fontSize="20">
+          {process.env.REACT_APP_QUOTE_REF_LABEL} {quote.quoteRef}
+        </Typography>
+        <Typography fontSize="20">
+          {`${process.env.REACT_APP_QUOTE_START_DATE_LABEL} ${new Date(quote.startDate).toLocaleDateString()}`}
+        </Typography>
+      </Container>
+
+      <Container display="flex" flexDirection="column" alignItems="center"
+        backgroundColor="white"
+        p="32"
+        borderRounded
+      >
+        <Typography as="div"
+          fontSize="64"
+          fontWeight="bold"
+          lineHeight="1"
         >
-          <Typography as="div"
-            fontSize="64"
-            fontWeight="bold"
-            lineHeight="1"
-          >
-            {process.env.REACT_APP_CURRENCY_SYBMOL}{showMonthlyPrice ? monthlyPrice.toFixed(2) : annualPrice.toFixed(2)}
+          {process.env.REACT_APP_CURRENCY_SYBMOL}{showMonthlyPrice ? monthlyPrice.toFixed(2) : annualPrice.toFixed(2)}
+        </Typography>
+
+        <Typography fontSize="32" color="primary">
+          {showMonthlyPrice
+            ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX
+            : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX
+          }
+        </Typography>
+
+        <Container
+          maxWidth="440px" mt="24"
+          flexGrow="1"
+          display="flex" flexDirection="column" gap="24"
+          justifyContent="space-between"
+          alignItems="flex-end"
+          width='100%'
+        >
+
+          <Typography textAlign="center">
+            {process.env.REACT_APP_QUOTE_PRICE_INFO}
           </Typography>
 
-          <Heading2 color="primary">
-            {showMonthlyPrice ? process.env.REACT_APP_MONTHLY_PRICE_SUFFIX : process.env.REACT_APP_ANNUAL_PRICE_SUFFIX}
-          </Heading2>
-          <Typography>
-            This price includes Insurance Premium Tax at the current rate. No charge for paying monthly.
-          </Typography>
           <Button
             onClick={() => dispatch(toggleShowMonthlyPrice())}
             variant="secondary"
             fullWidth
           >
-            monthly/annual
+            {showMonthlyPrice
+              ? process.env.REACT_APP_QUOTE_PRICE_SWITCH_YEAR
+              : process.env.REACT_APP_QUOTE_PRICE_SWITCH_MONTH
+            }
           </Button>
         </Container>
-      </Grid>
+
+      </Container>
     </Container>
   )
 }

@@ -6,7 +6,6 @@ import useFetch from '../hooks/useFetch';
 
 import Loading from '../components/Loading';
 import Error from '../components/Error';
-import Flex from '../components/Flex';
 
 import QuoteDetail from './QuoteDetail';
 import QuoteAddons from './QuoteAddons';

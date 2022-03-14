@@ -16,30 +16,40 @@ const sizes = {
   16: '1rem',
   18: '1.125rem',
   20: '1.25rem',
+  32: '2rem',
   34: '2.125rem',
   42: '2.625rem',
   64: '4rem',
+  80: '5rem',
 }
 
 const spacing = {
+  4: '0.25rem',
   8: '0.5rem',
   16: '1rem',
+  24: '1.5rem',
   32: '2rem',
+  42: '2.625rem',
+  64: '4rem',
+  80: '5rem',
 }
 
 const theme = {
-  maxWidth: '1280px',
+  fixedWidth: '1376px',  
   spinnerSize: '100px',
   breakpoint: {
     sm: '600px',
     md: '900px',
     lg: '1200px',
-    xl: '1536px',
   },
   background: colors.grey.lightest,
-  default: colors.grey.darkest,
+  foreground: colors.grey.darkest,
   primary: colors.primary.main,
-  colors: colors,
+  secondary: colors.primary.light,
+  tertiary: colors.primary.lighter,
+  black: colors.black,
+  white: colors.white,
+  color: colors,
   font: {
     family: 'Nunito, Helvetica, Arial, sans-serif',
     size: {
@@ -48,15 +58,18 @@ const theme = {
     lineHeight: 1.25,
     weight: {
       normal: 400,
-      bold: 700
+      semiBold: 600,
+      bold: 700,
     },
     heading1: {
       size: sizes[42],
       color: colors.primary.main,
     },
     heading2: {
-      size: sizes[34],
+      size: sizes[32],
       color: colors.grey.darkest,
+      fontWeight: "normal",
+      letterSpacing: "-0.02em",
     },
     paragraph: {
       size: sizes[18],
@@ -70,41 +83,56 @@ const theme = {
   button: {
     paddingX: spacing[16],
     paddingY: spacing[8],
-    borderRadius: '25px',
+    border: {
+      width: '1px',
+      rounded: '25px',
+    },
     fontSize: sizes[18],
     cursor: 'pointer',
     primary: {
       default: {
+        border: colors.primary.main,
         background: colors.primary.main,
         color: colors.white,
       },
       hover: {
+        border: colors.primary.light,
         background: colors.primary.light,
         color: colors.white,
       }
     },
     secondary: {
       default: {
+        border: colors.primary.light,
         background: colors.primary.light,
         color: colors.grey.darkest,
       },
       hover: {
-        background: colors.primary.main,
-        color: colors.white,
+        border: colors.primary.light,
+        background: colors.grey.lightest,
+        color: colors.grey.darkest,
       }
     },
     tertiary: {
       default: {
-        background: colors.primary.lighter,
+        border: colors.primary.light,
+        background: colors.grey.lightest,
         color: colors.grey.darkest,
       },
       hover: {
+        border: colors.primary.light,
         background: colors.primary.light,
         color: colors.grey.darkest,
       }
     },
   },
-  boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.15)',
+  container: {
+    limitWidth: '200px',
+    border: {
+      width: '2px',
+      rounded: '25px'
+    }
+  }
 }
 
 export default theme;
