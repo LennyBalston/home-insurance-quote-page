@@ -37,7 +37,6 @@ const spacing = {
 
 const theme = {
   fixedWidth: '1376px',  
-  spinnerSize: '100px',
   breakpoint: {
     sm: '600px',
     md: '900px',

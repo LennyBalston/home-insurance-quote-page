@@ -1,11 +1,11 @@
-import Flex from '../components/Flex';
+import Container from './Container';
 import Spinner from '../components/Spinner';
 
 function Loading() {
   return (
-    <Flex justifyContent="center" >
+    <Container display="flex" justifyContent="center" py="32">
       <Spinner />
-    </Flex>
+    </Container>
   )
 }
 

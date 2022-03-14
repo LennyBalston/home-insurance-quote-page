@@ -13,15 +13,15 @@ const rotate360 = keyframes`
 const Spinner = styled.div`
   animation: ${rotate360} 1s linear infinite;
   transform: translateZ(0);
-  
-  border-width: 8px;
+
+  width: 100px;
+  height: 100px;
+  border-width: 16px;
   border-style: solid;
-  border-color: ${(props) => props.theme.background};
+  border-color: ${(props) => props.theme.secondary};
   border-top-color: ${(props) => props.theme.primary};
   border-bottom-color: ${(props) => props.theme.primary};
   border-radius: 50%;
-  width: ${(props) => props.theme.spinnerSize};
-  height: ${(props) => props.theme.spinnerSize};
 `;
 
 export default Spinner;

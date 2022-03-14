@@ -43,6 +43,7 @@ function App() {
       </Container>
       <Container backgroundColor="green">
         <FixedWidthContainer as="main"  >
+          <Loading />
           {quoteContent}
         </FixedWidthContainer>
       </Container>
