@@ -6,7 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Start the mock api server:
 ### `json-server --watch db.json`
-
+It will run on port 4000
+Resources
+  http://localhost:4000/quote
+  http://localhost:4000/addons
+  
 In the project directory, you can run:
 
 ### `npm start`
@@ -17,7 +21,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm cypress open-ct`
+### `npx cypress open-ct`
 
 Starts the cypress test runner. Select your test to execute it and see the rendered output.
 See the section about [running tests](https://docs.cypress.io/guides/component-testing/framework-configuration#React-Create-React-App) for more information.
