@@ -74,7 +74,6 @@ function QuoteDetail({ quote }) {
 
           <Button data-test="switch-payment-terms"
             onClick={() => dispatch(toggleShowMonthlyPrice())}
-            variant="secondary"
             fullWidth
           >
             {showMonthlyPrice

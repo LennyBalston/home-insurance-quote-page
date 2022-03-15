@@ -13,8 +13,8 @@
 * cypress tests:
   * check the rendering of the quote reference number
   * check the rendering of the quote price
-  * ensure the correct prices are displayed at quote level and add-on level when toggling between monthly and annual payment terms
-  * check that prices are accurately updated when add-ons are selected or removed
+  * ensure correct prices are displayed at both quote and add-on level when toggling between monthly and annual payment terms
+  * check that the quote price is accurately updated when add-ons are selected or removed
 
 
 ## Tech Stack
