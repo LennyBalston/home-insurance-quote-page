@@ -1,15 +1,28 @@
-# Home Insurance Quote Page
+# Home Insurance Quote Summary Page
 
-description to go here
+* This Quote Summary Page displays quote details.
+* Users can toggle between monthly and annual payment terms.
+* Users can also select and remove add-ons to customise their quote.
+
+## Coding
+* A **Redux** store is used for the user selection data.
+* **localStorage** was also used to persist user selections.
+* **.env** variables are used for all the static text on the page and the API endpoints.
+* A custom **useFetch** hook was created to fetch data from the 2 APIs.
+* **styled-components** is used for UI components.
+* cypress tests:
+  * check the rendering of the quote reference number
+  * check the rendering of the quote price
+  * ensure the correct prices are displayed at quote level and add-on level when toggling between monthly and annual payment terms
+  * check that prices are accurately updated when add-ons are selected or removed
 
 
 ## Tech Stack
-
- * [Create React App](https://github.com/facebook/create-react-app)
- * [Redux Toolkit](https://redux-toolkit.js.org/)
- * [Styled-components](https://styled-components.com/)
- * [JSON server](https://github.com/typicode/json-server)
- * [cypress](https://www.cypress.io/)
+* [Create React App](https://github.com/facebook/create-react-app)
+* [Redux Toolkit](https://redux-toolkit.js.org/)
+* [Styled-components](https://styled-components.com/)
+* [JSON server](https://github.com/typicode/json-server)
+* [cypress](https://www.cypress.io/)
 
 
 ## Getting Started
@@ -28,7 +41,7 @@ Finally, start the app server.
 npm start
 ```
 
-The Quote Page will be available on port 3000:
+The Quote Summary Page will be available on port 3000:
 * http://localhost:3000
 
 The APIs will be available on port 4000:
