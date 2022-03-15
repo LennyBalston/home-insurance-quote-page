@@ -19,7 +19,11 @@ function Quote(props) {
 
   useEffect(() => {
     if (quote.monthlyPrice && quote.annualPrice) {
-      dispatch(updatePrice({ type: CONSTANT.ACTION_TYPE_SET, monthlyPrice: quote.monthlyPrice, annualPrice: quote.annualPrice }))
+      dispatch(updatePrice({ 
+        operation: CONSTANT.ACTION_OPERATION_SET, 
+        monthlyPrice: quote.monthlyPrice, 
+        annualPrice: quote.annualPrice 
+      }))
     }
   }, [quote, dispatch]);
 

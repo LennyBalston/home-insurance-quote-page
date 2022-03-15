@@ -18,20 +18,20 @@ const userQuoteSlice = createSlice({
       state.showMonthlyPrice = !state.showMonthlyPrice;
     },
     updatePrice: (state, action) => {
-      const { type, monthlyPrice, annualPrice } = action.payload;
-      switch (type) {
-        case CONSTANT.ACTION_TYPE_SET:
+      const { operation, monthlyPrice, annualPrice } = action.payload;
+      switch (operation) {
+        case CONSTANT.ACTION_OPERATION_SET:
           if (!state.isPricesInitialized) {
             state.monthlyPrice = monthlyPrice;
             state.annualPrice = annualPrice;
             state.isPricesInitialized = true;
           }
           break;
-        case CONSTANT.ACTION_TYPE_ADD:
+        case CONSTANT.ACTION_OPERATION_ADD:
           state.monthlyPrice = state.monthlyPrice + monthlyPrice;
           state.annualPrice = state.annualPrice + annualPrice;
           break;
-        case CONSTANT.ACTION_TYPE_REMOVE:
+        case CONSTANT.ACTION_OPERATION_REMOVE:
           state.monthlyPrice = state.monthlyPrice - monthlyPrice;
           state.annualPrice = state.annualPrice - annualPrice;
           break;
@@ -40,9 +40,9 @@ const userQuoteSlice = createSlice({
       }
     },
     updateAddonsSelected: (state, action) => {
-      const { type } = action.payload;
-      switch (type) {
-        case CONSTANT.ACTION_TYPE_SET:
+      const { operation } = action.payload;
+      switch (operation) {
+        case CONSTANT.ACTION_OPERATION_SET:
           if (!state.isAddonsSelectedInitialized) {
             const addons = action.payload.addons
             for (let i = 0; i < addons.length; i++) {
@@ -51,7 +51,7 @@ const userQuoteSlice = createSlice({
             state.isAddonsSelectedInitialized = true;
           }
           break;
-        case CONSTANT.ACTION_TYPE_TOGGLE:
+        case CONSTANT.ACTION_OPERATION_TOGGLE:
           const id = action.payload.id
           state.addonsSelected[id] = !state.addonsSelected[id]
           break;

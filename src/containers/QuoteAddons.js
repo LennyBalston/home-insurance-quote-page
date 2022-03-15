@@ -22,28 +22,40 @@ function QuoteAddons({ addons }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(updateAddonsSelected({ type: CONSTANT.ACTION_TYPE_SET, addons: addons }))
+    dispatch(updateAddonsSelected({
+      operation: CONSTANT.ACTION_OPERATION_SET,
+      addons: addons
+    }))
   }, [dispatch, addons]);
 
   const handleAddonToggle = (id, monthlyPrice, annualPrice) => {
     let action = ''
     if (!addonsSelected[id]) {
-      action = CONSTANT.ACTION_TYPE_ADD
+      action = CONSTANT.ACTION_OPERATION_ADD
     } else {
-      action = CONSTANT.ACTION_TYPE_REMOVE
+      action = CONSTANT.ACTION_OPERATION_REMOVE
     }
 
-    dispatch(updatePrice({ type: action, monthlyPrice: monthlyPrice, annualPrice: annualPrice }))
-    dispatch(updateAddonsSelected({ type: CONSTANT.ACTION_TYPE_TOGGLE, id: id }))
+    dispatch(updatePrice({
+      operation: action,
+      monthlyPrice: monthlyPrice,
+      annualPrice: annualPrice
+    }))
+    dispatch(updateAddonsSelected({
+      operation: CONSTANT.ACTION_OPERATION_TOGGLE,
+      id: id
+    }))
   }
 
   return (
     <>
-      <Heading1 as="h1" pb="32" >{process.env.REACT_APP_ADDONS_HEADING}</Heading1>
+      <Heading1 as="h1" pb="32" >
+        {process.env.REACT_APP_ADDONS_HEADING}
+      </Heading1>
       <Container display="grid" mb="32" gap="32" smGridTemplateColumns="1fr 1fr">
         {addons.map((addon, id) => (
 
-          <Container key={id} 
+          <Container key={id}
             display="grid"
             rowGap="42"
             columnGap="default"
@@ -73,7 +85,7 @@ function QuoteAddons({ addons }) {
               justifyContent="flex-end"
               alignItems="flex-end"
             >
-              <Button data-test="addon-toggle" title={!addonsSelected[id] ? 'add ' + addon.title : 'remove ' + addon.title} variant={!addonsSelected[id] ? 'secondary' : 'tertiary'}
+              <Button data-test="addon-toggle" variant={!addonsSelected[id] ? 'secondary' : 'tertiary'}
                 onClick={() => handleAddonToggle(
                   id, addon.monthlyPrice, addon.annualPrice
                 )}>

@@ -7,10 +7,11 @@ import data from './db.json';
 const quote = data.quote[0];
 const addons = data.addons;
 
+
 describe('App tests', () => {
+
   beforeEach(() => {
     mount(<App />)
-    console.log(data);
   })
 
 
@@ -31,7 +32,7 @@ describe('App tests', () => {
 
     it('renders the monthly price', () => {
       cy.get('[data-test="quote-price"]')
-        .should('contain', quote.monthlyPrice)
+        .should('contain', quote.monthlyPrice) 
     })
 
     it('switches to yearly price', () => {
