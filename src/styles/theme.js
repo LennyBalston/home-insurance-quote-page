@@ -58,7 +58,6 @@ const theme = {
     lineHeight: 1.25,
     weight: {
       normal: 400,
-      semiBold: 600,
       bold: 700,
     },
     heading1: {

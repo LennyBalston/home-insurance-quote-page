@@ -14,15 +14,6 @@ const GlobalStyle = createGlobalStyle`
  url("/fonts/Nunito-Regular.woff") format("woff");
   }
 
-  /** Nunito SemiBold **/
-  @font-face {
-    font-family: "Nunito";
-    font-weight: 600;
-    font-style: semi-bold;
-    src: url("/fonts/Nunito-SemiBold.woff2") format("woff2"),
-  url("/fonts/Nunito-SemiBold.woff") format("woff");
-  }
-
   /** Nunito Bold **/
   @font-face {
     font-family: "Nunito";
