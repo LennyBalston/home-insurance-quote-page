@@ -2,8 +2,8 @@ const colors = {
   white: '#ffffff',
   black: '#000000',
   primary: {
-    lighter: '#81D4Df',
-    light: '#81d0df',
+    lighter: '#cbedf2',
+    light: '#81D0DF',
     main: '#087592',
   },
   grey: {
@@ -109,7 +109,7 @@ const theme = {
       },
       hover: {
         border: colors.primary.light,
-        background: colors.grey.lightest,
+        background: colors.primary.lighter,
         color: colors.grey.darkest,
       }
     },
@@ -121,7 +121,7 @@ const theme = {
       },
       hover: {
         border: colors.primary.light,
-        background: colors.primary.light,
+        background: colors.primary.lighter,
         color: colors.grey.darkest,
       }
     },
